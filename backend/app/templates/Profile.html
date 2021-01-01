@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="title">
+  Welcome, {{ current_user.first_name }}!
+</h1>
+<h3>Detailed user information</h3>
+<p>Last Name: {{ current_user.last_name }}</p>
+<p>Address: {{ current_user.address }}</p>
+<p>User name: {{ current_user.username }}</p>
+<a href="/">Return</a>
+{% endblock %}

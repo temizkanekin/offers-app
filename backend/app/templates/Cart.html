@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block content %}
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Name of the Product</th>
+        <th>Category</th>
+        <th>Current Stock</th>
+        <th>Brand</th>
+        <th>Dimensions</th>
+        <th>Rating</th>
+        <th>Reviews</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% if products %}
+    {% for product in products %}
+    <tr>
+        <td>{{ product.name }}</td>
+        <td>{{ product.category }}</td>
+        <td>{{ product.stock }}</td>
+        <td>{{ product.brand }}</td>
+        <td>{{ product.rating }}</td>
+        <td>{{ product.dimensions }}</td>
+        <td>{{ product.reviews }}</td>
+        <td><a class="btn btn-primary" href="{{ url_for('main.buy_now', product_id=product.id) }}">Buy Now</a></td>
+        <td>
+            <button id="{{ product.id }}" value="{{ product.name }}" class="btn btn-primary"
+                    onclick="handleRemoveFromCart(this)">Remove from Cart
+            </button>
+        </td>
+    </tr>
+    {% endfor %}
+    {% endif %}
+    </tbody>
+    <tfoot>
+    <tr>
+        <th colspan="9">
+            <div id="toast" class="float-right toast fade d-none" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-body"></div>
+            </div>
+        </th>
+    </tr>
+    </tfoot>
+</table>
+<a href="/products">Return</a>
+{% if products %}
+<a class="btn btn-primary" href="{{ url_for('main.checkout') }}">Checkout</a>
+{% endif %}
+
+<script>
+    function handleRemoveFromCart(e){
+    document.getElementById('toast').classList.add('show')
+    document.getElementById('toast').classList.remove('d-none')
+    document.getElementById('toast').innerHTML = e.value + " removed from the cart"
+    setTimeout(function(){document.getElementById('toast').classList.add('d-none')}, 500)
+    url = "/remove_from_cart/"+e.id
+    fetch(url,{method:'GET'})
+    setTimeout(function(){location.reload()},750)
+    }
+
+</script>
+{% endblock %}

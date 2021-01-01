@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="w-100 h-100 d-flex flex-column align-items-center justify-content-center">
+    <form class="mb-2 text-center" name="loginForm" action='input' method="POST" onsubmit="return validateForm()">
+        <p>
+            <label for="inputA">InputA: </label>
+            <input type="text" name="inputA"/>
+        </p>
+        <p>
+            <label for="inputB">InputB: </label>
+            <input type="text" name="inputB"/>
+        </p>
+        <p id="errorMessage">{{ message }}</p>
+        <input type="submit" value="Submit!"/>
+    </form>
+</div>
+<script>
+function validateForm() {
+  var inputB = document.forms["loginForm"]["inputB"].value;
+  if (inputB.length !== 5 || !/^\d+$/.test(inputB)) {
+    document.getElementById("errorMessage").innerHTML = "InputB value should contain only numbers of length 5";
+    return false;
+  }
+}
+
+</script>
+{% endblock %}

@@ -1,0 +1,12 @@
+.offers-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.offers {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px;
+    overflow: auto;
+}
