@@ -60,6 +60,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
   - Profile view to display detailed user information.
   - Products view to display the products via descriptions in table with _Buy Now_ and _Add to Cart_ features.
   - Cart view to display the products that added to the cart by user. _Buy Now_, _Remove From Cart_ and _Checkout_ features are available in this page.
+  - Checkout view to inform user about checkout of the products is successful.
 - The app has user Login/Logout feature that implemented via Flask-Login.
 - The app has _Buy Now_ as mentioned above in both Products and Cart views. After clicking _Buy Now_ button, Current Stock of the product is updated.
 - Each user has own shopping cart and non-cleared shopping cart is saved for future log-ins.
@@ -68,4 +69,4 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 - Passwords in the app is saved to the db with hashes. _werkzeug.security_ is used to generate_password_hash method.
 - The app has stock management feature (Currently users can not add/remove products).
 - Bootstrap is used to styling the app.
-
+- The app has own logger in the back end.
